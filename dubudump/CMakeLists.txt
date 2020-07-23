@@ -1,4 +1,4 @@
-set(target_name "app")
+set(target_name "dubudump")
 
 set(src_files
     "src/main.cpp")
@@ -6,10 +6,12 @@ set(src_files
 # Project
 add_executable(${target_name} ${src_files})
 
-source_group("src" FILES "src/main.cpp")
+target_link_libraries(${target_name} CONAN_PKG::fmt)
 
 set_target_properties(${target_name} PROPERTIES FOLDER ${PROJECT_NAME})
 set_target_properties(${target_name} PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_HOME_DIRECTORY}/bin)
+
+install(TARGETS ${target_name})
 
 # Tests
 add_executable(${target_name}_test "test/test.cpp")
